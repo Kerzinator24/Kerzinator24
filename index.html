@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kerzinator_24's Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 60px auto 20px;
+      padding: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      background-color: #FFC107;
+      position: fixed;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: top 0.3s ease;
+      z-index: 999;
+    }
+
+    @keyframes slideInDown {
+      from {
+        top: -100px;
+      }
+
+      to {
+        top: 0;
+      }
+    }
+
+    .header.show {
+      top: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ff0000;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    .filters label {
+      font-weight: bold;
+      margin-right: 10px;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    .filters select {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      border: 2px solid #FFC107;
+      transition: border-color 0.3s ease;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    .filters select:first-child {
+      margin-right: 10px;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+      position: relative;
+      z-index: 1;
+    }
+
+    .search-container input[type=text] {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      border: 2px solid #FFC107;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-container button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #FFC107;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    .search-container button:hover {
+      background-color: #ff0000;
+    }
+
+    .modpacks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+    }
+
+    .modpacks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+
+    .mod {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #FFC107;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      animation: slideInUp 0.5s ease-in-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mod:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-color: #ff0000;
+    }
+
+    .mod:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid #FFC107;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border-color: #FFA000;
+      opacity: 0;
+      transition: opacity 0.3s ease, border-color 0.3s ease;
+    }
+
+    .mod:hover:before {
+      opacity: 1;
+    }
+
+    .mod img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .mod .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .mod h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .mod:hover h3 {
+      color: #ff0000;
+      transform: translateY(-3px);
+    }
+
+    .mod p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    .mod a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .mod a:hover {
+      color: #ff0000;
+    }
+
+    .mod:hover p {
+      color: #888;
+    }
+
+    .fixed-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .fixed-button:before {
+      content: "";
+      display: inline-block;
+      border-top: 0 solid #666;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    }
+
+    .fixed-button:hover {
+      background-color: #f9f9f9;
+    }
+
+    .fixed-button:hover:before {
+      border-top-color: #ff0000;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    .mod .author {
+      font-size: 12px;
+      color: #999;
+      margin-top: 10px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .modpacks {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .support-icon {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #FFC107;
+      color: #fff;
+      padding: 10px;
+      border-radius: 0 0 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .support-icon:hover {
+      background-color: #ff0000;
+      transform: translateX(5px);
+    }
+
+    @media screen and (max-width: 767px) {
+
+      .filters,
+      .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filters select,
+      .search-container input[type=text],
+      .search-container button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .modpacks {
+        grid-template-columns: 1fr;
+      }
+
+      .fixed-button {
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Kerzinator_24's Projects</h1>
+  </div>
+  <div class="container">
+    <div class="filters">
+      <label for="mod-loader-select">Type:</label>
+      <select id="mod-loader-select" onchange="filterMods()">
+        <option value="">All</option>
+        <option value="Forge">Forge Mod</option>
+        <option value="Forgepack">Forge Modpack</option>
+        <option value="Fabric">Fabric Mod</option>
+        <option value="Fabricpack">Fabric Modpack</option>
+        <option value="Datapack">Datapack</option>
+        <option value="Plugin">Spigot Plugin</option>
+      </select>
+      <br>
+      <label for="minecraft-version-select">Minecraft Version:</label>
+      <select id="minecraft-version-select" onchange="filterMods()">
+        <option value="">All</option>
+        <option value="1.12.2">1.12.2</option>
+        <option value="1.16.5">1.16.5</option>
+        <option value="1.17.1">1.17.1</option>
+      </select>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="Search by mod name" id="search-input">
+      <button type="button" onclick="searchMods()">Search</button>
+    </div>
+    <div class="modpacks">
+      <div class="mod" data-name="More Structures Plus" data-mod-loader="Forge" data-minecraft-version="1.12.2"
+        onclick="redirectTo('project1.html')">
+        <img src="https://media.forgecdn.net/avatars/819/14/638198476855185180.png" alt="More Structures Plus">
+        <h3>More Structures Plus</h3>
+        <p>Mod Loader: Forge</p>
+        <p>Minecraft Version: 1.12.2</p>
+        <a href="https://www.example.com/downloads/project1.zip">Download</a>
+      </div>
+      <div class="mod" data-name="Enhanced Crafting" data-mod-loader="Fabric" data-minecraft-version="1.16.5"
+        onclick="redirectTo('project2.html')">
+        <img src="https://media.forgecdn.net/avatars/819/339/638199331648483082.png" alt="Enhanced Crafting">
+        <h3>Enhanced Crafting</h3>
+        <p>Mod Loader: Fabric</p>
+        <p>Minecraft Version: 1.16.5</p>
+        <a href="https://www.example.com/downloads/project2.zip">Download</a>
+      </div>
+      <div class="mod" data-name="Epic Adventures" data-mod-loader="Forge" data-minecraft-version="1.17.1"
+        onclick="redirectTo('project3.html')">
+        <img src="https://media.forgecdn.net/avatars/819/14/638198476855185180.png" alt="Epic Adventures">
+        <h3>Epic Adventures</h3>
+        <p>Mod Loader: Forge</p>
+        <p>Minecraft Version: 1.17.1</p>
+        <a href="https://www.example.com/downloads/project3.zip">Download</a>
+      </div>
+    </div>
+  </div>
+  <div class="support-icon" onclick="redirectToSupportPage()">
+    <a href="https://patreon.com/Kerzinator_24" style="color: #fff; text-decoration: none;">
+      <img src="pngfind.com-patreon-png-424697.png" alt="Support Icon" width="40" height="40">
+      <div>Support my work!</div>
+    </a>
+  </div>
+  <script>
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      var header = document.querySelector('.header');
+      var fixedButton = document.querySelector('.fixed-button');
+      if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+        header.style.top = '0';
+        fixedButton.style.opacity = '1';
+      } else {
+        header.style.top = '-100px';
+        fixedButton.style.opacity = '0';
+      }
+    }
+
+
+    function scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    function redirectTo(url) {
+      window.location.href = url;
+    }
+
+    function filterMods() {
+      var modLoaderSelect = document.getElementById('mod-loader-select');
+      var minecraftVersionSelect = document.getElementById('minecraft-version-select');
+      var mods = document.getElementsByClassName('mod');
+
+      var selectedModLoader = modLoaderSelect.value;
+      var selectedMinecraftVersion = minecraftVersionSelect.value;
+
+      for (var i = 0; i < mods.length; i++) {
+        var mod = mods[i];
+        var modLoader = mod.getAttribute('data-mod-loader');
+        var minecraftVersion = mod.getAttribute('data-minecraft-version');
+
+        if (
+          (selectedModLoader === '' || selectedModLoader === modLoader) &&
+          (selectedMinecraftVersion === '' || selectedMinecraftVersion === minecraftVersion)
+        ) {
+          mod.style.display = 'block';
+        } else {
+          mod.style.display = 'none';
+        }
+      }
+    }
+
+    function searchMods() {
+      var searchInput = document.getElementById('search-input');
+      var mods = document.getElementsByClassName('mod');
+
+      var searchQuery = searchInput.value.toLowerCase();
+
+      for (var i = 0; i < mods.length; i++) {
+        var mod = mods[i];
+        var modName = mod.getAttribute('data-name').toLowerCase();
+
+        if (modName.includes(searchQuery)) {
+          mod.style.display = 'block';
+        } else {
+          mod.style.display = 'none';
+        }
+      }
+    }
+    function redirectToSupportPage() {
+      window.location.href = 'https://www.patreon.com/Kerzinator_24';
+    }
+  </script>
+</body>
+
+</html>
