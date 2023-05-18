@@ -103,6 +103,18 @@
       width: 100%;
       height: auto;
       max-height: 500px;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
 
     .screenshot.active {
@@ -224,7 +236,7 @@
 
 <body>
   <div class="container">
-    <h1>Project 1 - More Structures Plus</h1>
+    <h1>More Structures Plus</h1>
     <div class="back-button" onclick="redirectToMainPage()"></div>
     <div class="project-summary">
       <h2>Summary</h2>

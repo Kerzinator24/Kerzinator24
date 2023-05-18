@@ -59,6 +59,18 @@
       top: 0;
     }
 
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
       text-align: center;
       margin-bottom: 30px;
@@ -77,6 +89,18 @@
 
       100% {
         transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -271,6 +295,7 @@
       color: #888;
     }
 
+
     .fixed-button {
       position: fixed;
       right: 20px;
@@ -366,6 +391,7 @@
       }
     }
   </style>
+  <link rel="icon" href="https://static.planetminecraft.com/files/avatar/3625294_1.png" type="image/x-icon">
 </head>
 
 <body>
@@ -374,7 +400,7 @@
   </div>
   <div class="container">
     <div class="filters">
-      <label for="mod-loader-select">Type:</label>
+      <label for="mod-loader-select">Type of project:</label>
       <select id="mod-loader-select" onchange="filterMods()">
         <option value="">All</option>
         <option value="Forge">Forge Mod</option>
@@ -402,23 +428,26 @@
         onclick="redirectTo('morestructuresplus.html')">
         <img src="https://media.forgecdn.net/avatars/819/14/638198476855185180.png" alt="More Structures Plus">
         <h3>More Structures Plus</h3>
+        <div class="summary">A few mods that add fantastic Structures!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.12.2</p>
         <a href="morestructuresplus_download.html">Download</a>
       </div>
       <div class="mod" data-name="Mystical Magic" data-mod-loader="Forgepack" data-minecraft-version="1.12.2"
-        onclick="redirectTo('project2.html')">
+        onclick="redirectTo('mysticalmagic.html')">
         <img src="https://media.forgecdn.net/avatars/819/339/638199331648483082.png" alt="Mystical Magic">
         <h3>Mystical Magic</h3>
+        <div class="summary">Full of mystical things for you to explore!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.12.2</p>
         <a href="https://www.example.com/downloads/project2.zip">Download</a>
       </div>
       <div class="mod" data-name="NetherExileCraft(Nightmare Edition)" data-mod-loader="Forgepack"
         data-minecraft-version="1.19.2" onclick="redirectTo('project3.html')">
-        <img src="https://cdn-raw.modrinth.com/data/J3fJHTy4/1d1aae83911c96e7798b82a0b35263d272ac44e7.png"
+        <img src="https://cdn-raw.modrinth.com/data/J3fJHTy4/cd43fb4c78efee62f975df40bb578784e4914b1a.png"
           alt="NetherExileCraft(Nightmare Edition)">
         <h3>NetherExileCraft(Nightmare Edition)</h3>
+        <div class="summary">Survive Nether's new mobs, biomes and loot!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.19.2</p>
         <a href="https://www.example.com/downloads/project3.zip">Download</a>
@@ -435,6 +464,8 @@
     window.onscroll = function () {
       scrollFunction();
     };
+    var searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', searchMods);
 
     function scrollFunction() {
       var header = document.querySelector('.header');
@@ -484,21 +515,21 @@
 
     function searchMods() {
       var searchInput = document.getElementById('search-input');
+      var filter = searchInput.value.toLowerCase();
       var mods = document.getElementsByClassName('mod');
-
-      var searchQuery = searchInput.value.toLowerCase();
 
       for (var i = 0; i < mods.length; i++) {
         var mod = mods[i];
         var modName = mod.getAttribute('data-name').toLowerCase();
 
-        if (modName.includes(searchQuery)) {
+        if (modName.includes(filter)) {
           mod.style.display = 'block';
         } else {
           mod.style.display = 'none';
         }
       }
     }
+
     function redirectToSupportPage() {
       window.location.href = 'https://www.patreon.com/Kerzinator_24';
     }
