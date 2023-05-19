@@ -71,7 +71,7 @@
       }
     }
 
-    h1 {
+    .bar {
       text-align: center;
       margin-bottom: 30px;
       color: #ff0000;
@@ -295,6 +295,15 @@
       color: #888;
     }
 
+    .mod img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+    }
+
+
 
     .fixed-button {
       position: fixed;
@@ -390,22 +399,29 @@
         bottom: 10px;
       }
     }
+
+    .alert {
+      color: red
+    }
   </style>
   <link rel="icon" href="https://static.planetminecraft.com/files/avatar/3625294_1.png" type="image/x-icon">
 </head>
 
 <body>
+  <noscript class="alert">You need to enable JavaScript to run this app.</noscript>
   <div class="header">
-    <h1>Kerzinator_24's Projects</h1>
+    <h1 class="bar">Kerzinator_24's Projects</h1>
   </div>
   <div class="container">
+    <h1>Kerzinator_24's Projects</h1>
+    <h2>Filters:</h2>
     <div class="filters">
       <label for="mod-loader-select">Type of project:</label>
       <select id="mod-loader-select" onchange="filterMods()">
         <option value="">All</option>
-        <option value="Forge">Forge Mod</option>
+        <option value="Forgemod">Forge Mod</option>
         <option value="Forgepack">Forge Modpack</option>
-        <option value="Fabric">Fabric Mod</option>
+        <option value="Fabricmod">Fabric Mod</option>
         <option value="Fabricpack">Fabric Modpack</option>
         <option value="Datapack">Datapack</option>
         <option value="Plugin">Spigot Plugin</option>
@@ -420,38 +436,63 @@
       </select>
     </div>
     <div class="search-container">
-      <input type="text" placeholder="Search by mod name" id="search-input">
+      <input type="text" placeholder="Search by project name" id="search-input">
       <button type="button" onclick="searchMods()">Search</button>
     </div>
     <div class="modpacks">
-      <div class="mod" data-name="More Structures Plus" data-mod-loader="Forge" data-minecraft-version="1.12.2"
-        onclick="redirectTo('morestructuresplus.html')">
+      <div class="mod" data-name="More Structures Plus" data-mod-loader="Forgepack" data-minecraft-version="1.12.2"
+        onclick="redirectTo('files for More Structures Plus/morestructuresplus.html')">
         <img src="https://media.forgecdn.net/avatars/819/14/638198476855185180.png" alt="More Structures Plus">
         <h3>More Structures Plus</h3>
         <div class="summary">A few mods that add fantastic Structures!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.12.2</p>
-        <a href="morestructuresplus_download.html">Download</a>
+        <a href="files for More Structures Plus/morestructuresplus_download.html">Download</a>
       </div>
+
       <div class="mod" data-name="Mystical Magic" data-mod-loader="Forgepack" data-minecraft-version="1.12.2"
-        onclick="redirectTo('mysticalmagic.html')">
+        onclick="redirectTo('files for Mystical Magic/mysticalmagic.html')">
         <img src="https://media.forgecdn.net/avatars/819/339/638199331648483082.png" alt="Mystical Magic">
         <h3>Mystical Magic</h3>
         <div class="summary">Full of mystical things for you to explore!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.12.2</p>
-        <a href="https://www.example.com/downloads/project2.zip">Download</a>
+        <a href="files for Mystical Magic/mysticalmagic_download.html">Download</a>
       </div>
+
       <div class="mod" data-name="NetherExileCraft(Nightmare Edition)" data-mod-loader="Forgepack"
-        data-minecraft-version="1.19.2" onclick="redirectTo('project3.html')">
+        data-minecraft-version="1.19.2" onclick="redirectTo('files for NetherExileCraft/netherexilecraft.html')">
         <img src="https://cdn-raw.modrinth.com/data/J3fJHTy4/cd43fb4c78efee62f975df40bb578784e4914b1a.png"
           alt="NetherExileCraft(Nightmare Edition)">
         <h3>NetherExileCraft(Nightmare Edition)</h3>
-        <div class="summary">Survive Nether's new mobs, biomes and loot!</div>
+        <div class="summary">Survive the Nether with new mobs, biomes and loot!</div>
         <p>Type: Forge Modpack</p>
         <p>Minecraft Version: 1.19.2</p>
-        <a href="https://www.example.com/downloads/project3.zip">Download</a>
+        <a href="files for NetherExileCraft/netherexilecraft_download.html">Download</a>
       </div>
+
+      <div class="mod" data-name="Creative Utilities" data-mod-loader="Datapack Fabricmod Forgemod"
+        data-minecraft-version="1.16.2" onclick="redirectTo('files for Creative Utilities/creativeutilities.html')">
+        <img src="https://cdn.modrinth.com/data/aIZiqRRV/3cc32908c921f38f111399773c35b14f976e44df.png"
+          alt="Creative Utilities">
+        <h3>Creative Utilities</h3>
+        <div class="summary">It gives you a comand block, redstone block and tnt when you spawn.</div>
+        <p>Type: Forge/Fabric Mod or Datapack</p>
+        <p>Minecraft Version: 1.16.2</p>
+        <a href="files for Creative Utilities/creativeutilities_download.html">Download</a>
+      </div>
+
+      <div class="mod" data-name="OP Spawn" data-mod-loader="Datapack Forgemod Fabricmod"
+        data-minecraft-version="1.16.2" onclick="redirectTo('files for OP Spawn/opspawn.html')">
+        <img src="https://cdn.modrinth.com/data/cZM0AdlU/e2c613af85aaeee4cd01eb68990c670afb18225f.png" alt="OP Spawn">
+        <h3>OP Spawn</h3>
+        <div class="summary">When you spawn, you get a stack of netherite blocks and level 30 enchanted netherite armor.
+        </div>
+        <p>Type: Forge/Fabric Mod or Datapack</p>
+        <p>Minecraft Version: 1.16.2</p>
+        <a href="files for OP Spawn/opspawn_download.html">Download</a>
+      </div>
+
     </div>
   </div>
   <div class="support-icon" onclick="redirectToSupportPage()">
@@ -490,25 +531,30 @@
     }
 
     function filterMods() {
-      var modLoaderSelect = document.getElementById('mod-loader-select');
-      var minecraftVersionSelect = document.getElementById('minecraft-version-select');
-      var mods = document.getElementsByClassName('mod');
+      let modLoaderSelect = document.getElementById("mod-loader-select");
+      let minecraftVersionSelect = document.getElementById("minecraft-version-select");
+      let selectedModLoader = modLoaderSelect.value;
+      let selectedMinecraftVersion = minecraftVersionSelect.value;
+      let mods = document.getElementsByClassName("mod");
+      for (let i = 0; i < mods.length; i++) {
+        let mod = mods[i];
+        let modLoader = mod.getAttribute("data-mod-loader");
+        let minecraftVersion = mod.getAttribute("data-minecraft-version");
 
-      var selectedModLoader = modLoaderSelect.value;
-      var selectedMinecraftVersion = minecraftVersionSelect.value;
+        let displayMod = true;
 
-      for (var i = 0; i < mods.length; i++) {
-        var mod = mods[i];
-        var modLoader = mod.getAttribute('data-mod-loader');
-        var minecraftVersion = mod.getAttribute('data-minecraft-version');
+        if (selectedModLoader && !modLoader.includes(selectedModLoader)) {
+          displayMod = false;
+        }
 
-        if (
-          (selectedModLoader === '' || selectedModLoader === modLoader) &&
-          (selectedMinecraftVersion === '' || selectedMinecraftVersion === minecraftVersion)
-        ) {
-          mod.style.display = 'block';
+        if (selectedMinecraftVersion && minecraftVersion !== selectedMinecraftVersion) {
+          displayMod = false;
+        }
+
+        if (displayMod) {
+          mod.style.display = "block";
         } else {
-          mod.style.display = 'none';
+          mod.style.display = "none";
         }
       }
     }

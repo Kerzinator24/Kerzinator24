@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Creative Utilities by Kerzinator_24</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #FFC107;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .back-button {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #FFC107;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px 0 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .back-button:hover {
+      background-color: #ff0000;
+      transform: translateX(-5px);
+    }
+
+    .back-button::before {
+      content: "<";
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .back-button span {
+      display: none;
+    }
+
+    .project-summary {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+      animation: fade-in 1s ease-out;
+    }
+
+    .project-summary h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-summary p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .screenshot-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: slide-up 1s ease-out;
+    }
+
+    .screenshot {
+      display: none;
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+    }
+
+    .screenshot.active {
+      display: block;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      animation: fade-in 1s ease-out;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 5px;
+      background-color: #FFC107;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pagination button.active {
+      background-color: #ff0000;
+    }
+
+    .download-links {
+      text-align: center;
+      animation: slide-up 1s ease-out;
+    }
+
+    .download-links a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 10px 20px;
+      background-color: #FFC107;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-links a:hover {
+      background-color: #ff0000;
+    }
+
+    /* Animations */
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      background-color: #FFC107;
+      position: fixed;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: top 0.3s ease;
+      z-index: 999;
+    }
+
+    @keyframes slideInDown {
+      from {
+        top: -100px;
+      }
+
+      to {
+        top: 0;
+      }
+    }
+
+    .header.show {
+      top: 0;
+    }
+
+    .support-icon {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #FFC107;
+      color: #fff;
+      padding: 10px;
+      border-radius: 0 0 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .support-icon:hover {
+      background-color: #ff0000;
+      transform: translateX(5px);
+    }
+  </style>
+  <link rel="icon" href="https://cdn.modrinth.com/data/cZM0AdlU/e2c613af85aaeee4cd01eb68990c670afb18225f.png" type="image/x-icon">
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>OP Spawn</h1>
+    <div class="back-button" onclick="redirectToMainPage()"></div>
+    <div class="project-summary">
+      <h2>Summary</h2>
+      <p>When spawned into a new world, OP Spawn will instantly give the players a stack of Netherite blocks as well as full Netherite Armor! This Netherite Armor will also be enchanted with randomly selected level 30 enchantments. With this equipment right at the start of your game, you can easily dominate your world.</p>
+    </div>
+
+    <div class="screenshot-container">
+      <h2>Take a look:</h2>
+      <img class="screenshot active" src="Screenshot1.png" alt="Screenshot 1">
+      <img class="screenshot" src="Screenshot2.png" alt="Screenshot 2">
+      <img class="screenshot" src="Screenshot3.png" alt="Screenshot 3">
+      <img class="screenshot" src="Screenshot4.png" alt="Screenshot 4">
+      <img class="screenshot" src="Screenshot5.png" alt="Screenshot 5">
+      <img class="screenshot" src="creenshot6.png" alt="Screenshot 6">
+      <img class="screenshot" src="Screenshot7.png" alt="Screenshot 7">
+      <img class="screenshot" src="Screenshot8.png" alt="Screenshot 8">
+    </div>
+
+    <div class="pagination">
+      <button class="active" onclick="showScreenshot(1)">1</button>
+      <button onclick="showScreenshot(2)">2</button>
+      <button onclick="showScreenshot(3)">3</button>
+      <button onclick="showScreenshot(4)">4</button>
+      <button onclick="showScreenshot(5)">5</button>
+    </div>
+
+    <div class="download-links">
+      <h2>Download as:</h2>
+      <a href="opspawn_moddownload.html">Forge/Fabric Mod</a>
+      <a href="opspawn_datapackdownload.html">Datapack</a>
+    </div>
+  </div>
+  <div class="support-icon" onclick="redirectToSupportPage()">
+    <a href="https://patreon.com/Kerzinator_24" style="color: #fff; text-decoration: none;">
+      <img src="pngfind.com-patreon-png-424697.png" alt="Support Icon" width="40" height="40">
+      <div>Support my work!</div>
+    </a>
+  </div>
+  <script>
+    function redirectToMainPage() {
+      const backButton = document.querySelector('.back-button');
+      backButton.style.transform = 'translateX(-50px)';
+      setTimeout(function () {
+        window.location.href = 'https://kerzinator24.repl.co';
+      }, 300);
+    }
+
+    function showScreenshot(index) {
+      const screenshots = document.getElementsByClassName("screenshot");
+      const buttons = document.getElementsByClassName("pagination")[0].getElementsByTagName("button");
+
+      for (let i = 0; i < screenshots.length; i++) {
+        screenshots[i].classList.remove("active");
+      }
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+      }
+
+      screenshots[index - 1].classList.add("active");
+      buttons[index - 1].classList.add("active");
+    }
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      var header = document.querySelector('.header');
+      var fixedButton = document.querySelector('.fixed-button');
+      if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+        header.style.top = '0';
+        fixedButton.style.opacity = '1';
+      } else {
+        header.style.top = '-100px';
+        fixedButton.style.opacity = '0';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
