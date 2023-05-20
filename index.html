@@ -430,9 +430,12 @@
       <label for="minecraft-version-select">Minecraft Version:</label>
       <select id="minecraft-version-select" onchange="filterMods()">
         <option value="">All</option>
-        <option value="1.12.2">1.12.2</option>
-        <option value="1.16.5">1.16.5</option>
-        <option value="1.17.1">1.17.1</option>
+        <option value="1.12">1.12.x</option>
+        <option value="1.14">1.14.x</option>
+        <option value="1.16">1.16.x</option>
+        <option value="1.17">1.17.x</option>
+        <option value="1.18">1.18.x</option>
+        <option value="1.19">1.19.x</option>
       </select>
     </div>
     <div class="search-container">
@@ -440,7 +443,7 @@
       <button type="button" onclick="searchMods()">Search</button>
     </div>
     <div class="modpacks">
-      <div class="mod" data-name="More Structures Plus" data-mod-loader="Forgepack" data-minecraft-version="1.12.2"
+      <div class="mod" data-name="More Structures Plus" data-mod-loader="Forgepack" data-minecraft-version="1.12"
         onclick="redirectTo('files for More Structures Plus/morestructuresplus.html')">
         <img src="https://media.forgecdn.net/avatars/819/14/638198476855185180.png" alt="More Structures Plus">
         <h3>More Structures Plus</h3>
@@ -450,7 +453,7 @@
         <a href="files for More Structures Plus/morestructuresplus_download.html">Download</a>
       </div>
 
-      <div class="mod" data-name="Mystical Magic" data-mod-loader="Forgepack" data-minecraft-version="1.12.2"
+      <div class="mod" data-name="Mystical Magic" data-mod-loader="Forgepack" data-minecraft-version="1.12"
         onclick="redirectTo('files for Mystical Magic/mysticalmagic.html')">
         <img src="https://media.forgecdn.net/avatars/819/339/638199331648483082.png" alt="Mystical Magic">
         <h3>Mystical Magic</h3>
@@ -461,7 +464,7 @@
       </div>
 
       <div class="mod" data-name="NetherExileCraft(Nightmare Edition)" data-mod-loader="Forgepack"
-        data-minecraft-version="1.19.2" onclick="redirectTo('files for NetherExileCraft/netherexilecraft.html')">
+        data-minecraft-version="1.19" onclick="redirectTo('files for NetherExileCraft/netherexilecraft.html')">
         <img src="https://cdn-raw.modrinth.com/data/J3fJHTy4/cd43fb4c78efee62f975df40bb578784e4914b1a.png"
           alt="NetherExileCraft(Nightmare Edition)">
         <h3>NetherExileCraft(Nightmare Edition)</h3>
@@ -472,27 +475,40 @@
       </div>
 
       <div class="mod" data-name="Creative Utilities" data-mod-loader="Datapack Fabricmod Forgemod"
-        data-minecraft-version="1.16.2" onclick="redirectTo('files for Creative Utilities/creativeutilities.html')">
+        data-minecraft-version="1.16 1.16 1.17 1.18 1.19"
+        onclick="redirectTo('files for Creative Utilities/creativeutilities.html')">
         <img src="https://cdn.modrinth.com/data/aIZiqRRV/3cc32908c921f38f111399773c35b14f976e44df.png"
           alt="Creative Utilities">
         <h3>Creative Utilities</h3>
         <div class="summary">It gives you a comand block, redstone block and tnt when you spawn.</div>
         <p>Type: Forge/Fabric Mod or Datapack</p>
-        <p>Minecraft Version: 1.16.2</p>
+        <p>Minecraft Version: 1.16.2-1.19.4</p>
         <a href="files for Creative Utilities/creativeutilities_download.html">Download</a>
       </div>
 
       <div class="mod" data-name="OP Spawn" data-mod-loader="Datapack Forgemod Fabricmod"
-        data-minecraft-version="1.16.2" onclick="redirectTo('files for OP Spawn/opspawn.html')">
+        data-minecraft-version="1.16 1.17 1.18 1.19" onclick="redirectTo('files for OP Spawn/opspawn.html')">
         <img src="https://cdn.modrinth.com/data/cZM0AdlU/e2c613af85aaeee4cd01eb68990c670afb18225f.png" alt="OP Spawn">
         <h3>OP Spawn</h3>
         <div class="summary">When you spawn, you get a stack of netherite blocks and level 30 enchanted netherite armor.
         </div>
         <p>Type: Forge/Fabric Mod or Datapack</p>
-        <p>Minecraft Version: 1.16.2</p>
+        <p>Minecraft Version: 1.16.2-1-19.4</p>
         <a href="files for OP Spawn/opspawn_download.html">Download</a>
       </div>
 
+      <div class="mod" data-name="OP Spawn" data-mod-loader="Datapack Forgemod Fabricmod"
+        data-minecraft-version="1.16 1.17 1.18 1.19" onclick="redirectTo('files for OP Spawn/opspawn.html')">
+        <img src="https://cdn.modrinth.com/data/cZM0AdlU/e2c613af85aaeee4cd01eb68990c670afb18225f.png" alt="OP Spawn">
+        <h3>Find The Rare Biomes</h3>
+        <div class="summary">Discover rare biomes, earn rewards!
+        </div>
+        <p>Type: Forge/Fabric Mod or Datapack</p>
+        <p>Minecraft Version: 1.16.2-1-19.4</p>
+        <a href="files for OP Spawn/opspawn_download.html">Download</a>
+      </div>
+
+      
     </div>
   </div>
   <div class="support-icon" onclick="redirectToSupportPage()">
@@ -547,7 +563,7 @@
           displayMod = false;
         }
 
-        if (selectedMinecraftVersion && minecraftVersion !== selectedMinecraftVersion) {
+        if (selectedMinecraftVersion && !minecraftVersion.includes(selectedMinecraftVersion)) {
           displayMod = false;
         }
 
